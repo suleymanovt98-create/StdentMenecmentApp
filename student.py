@@ -11,3 +11,6 @@ def updateStudent():
 
 def removeStudent();
     pass
+
+def searchStudent():
+    pass
