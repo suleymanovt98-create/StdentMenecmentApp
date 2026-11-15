@@ -49,15 +49,71 @@ def ShowAllStudent():
 
 
 def updateStudent():
-    pass
+
+    students = loadStudents()
+
+    try:
+        student_id = int(input("enter student id: "))
+
+        for student in students:
+            if student["id"] == student_id:
+                name = input("new name: ")
+                surname = input("new surname: ")
+                age = int(input("new age: "))
+                grades = input("new grades: ")
+                grades = [int(g) for g in grades.split(",")]
+
+                student["name"] = name
+                student["surname"] = surname
+                student["age"] = age
+                student["grades"] = grades
+
+                saveStudens(students)
+                print("Student update")
+                return
+
+        print("Student not found!")
+
+    except ValueError:
+        print("please enter numeric value")
 
 
 def removeStudent():
-    pass
+    students = loadStudents()
+
+    try:
+        student_id = int(input("enter student id: "))
+
+        for student in students:
+            if student["id"] == student_id:
+                students.remove(student)
+                saveStudens(students)
+                print("Student remove")
+                return
+
+        print("Student not found!")
+
+    except ValueError:
+        print("please enter numeric value")
 
 
 def searchStudent():
-    pass
+    students = loadStudents()
+
+    try:
+        keyword = input("enter name: ").lower()
+        found = False
+
+        for student in students:
+            if keyword in student["name"].lower():
+                print(student["id"], student["name"], student["surname"], student["age"], student["grades"])
+                found = True
+
+        if not found:
+            print("Student not found")
+
+    except KeyError:
+        print("student data error")
 
 
 if __name__ == "__main__":
