@@ -1,3 +1,5 @@
+import student
+
 def ShowAllStudent():
     students = loadStudents()
 
@@ -31,7 +33,8 @@ while True:
     elif secim == "5":
         searchStudent()
     elif secim == "0":
-        print("Bye!")
+        print("sagolun")
         break
     else:
         print("Wrong choice!")
+
